@@ -46,7 +46,7 @@ box-shadow:0 18px 45px rgba(105,91,52,.09);filter:blur(5px)}
 background:conic-gradient(from 210deg,transparent,rgba(255,224,117,.32),transparent 12%,rgba(255,224,117,.18),transparent 26%);
 filter:blur(8px);transform:rotate(calc(var(--scrollY)*.015deg));}
 
-#particles{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:3;opacity:.52}
+#particles{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:3;opacity:.82}
 
 /* Content must sit above sky */
 .nav,main,footer{position:relative;z-index:5}
@@ -106,7 +106,4 @@ footer{padding:55px 7%;border-top:1px solid var(--line);text-align:center;backgr
 .sun{right:-45px;top:10%;width:125px;height:125px}.sun-glow{right:-250px;top:-160px}.cloud{transform:scale(.72)}.cloud-2{transform:scale(.55)}.cloud-3,.cloud-4{opacity:.3}
 }
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;scroll-behavior:auto!important;transition:none!important}}
-ed-motion:reduce){
-  *,*:before,*:after{animation:none!important;scroll-behavior:auto!important;transition:none!important}
-  }
-    
+                                                                                                                                                                                                                                                                                                                                                                  
