@@ -60,4 +60,3 @@ requestAnimationFrame(drawParticles)
 resizeCanvas();createParticles();drawParticles();
 addEventListener("resize",()=>{resizeCanvas();createParticles()});
 updateCart();
-                 
