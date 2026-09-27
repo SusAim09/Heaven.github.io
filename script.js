@@ -1,105 +1,65 @@
-*{box-sizing:border-box;margin:0;padding:0}
-:root{--gold:#d4af37;--cream:#fbf8ee;--ink:#171717;--muted:#77736a;--line:rgba(23,23,23,.10);--scrollY:0px;--scrollSpeed:0}
-html{scroll-behavior:smooth}
-body{
-font-family:Inter,Arial,sans-serif;color:var(--ink);background:#fbf8ee;overflow-x:hidden;
+let cart=[];
+
+function addProduct(name,price){cart.push({name,price});updateCart();openCart()}
+function updateCart(){
+const count=document.getElementById("cart-count"),items=document.getElementById("cart-items"),total=document.getElementById("cart-total");
+count.textContent=cart.length;
+if(!cart.length){items.innerHTML='<p style="color:#888;padding:10px 0;">Your cart is empty.</p>';total.textContent="0.00";return}
+let sum=0;
+items.innerHTML=cart.map(i=>{sum+=i.price;return `<div class="cart-item"><span>${i.name}</span><strong>$${i.price.toFixed(2)}</strong></div>`}).join("");
+total.textContent=sum.toFixed(2)
 }
-body:before{
-content:"";position:fixed;inset:0;z-index:-3;pointer-events:none;
-background:
-radial-gradient(circle at 50% 15%,rgba(255,230,133,.38),transparent 28%),
-linear-gradient(135deg,#fffefa 0%,#fbf5e3 42%,#fff 72%,#f7edce 100%);
-background-size:160% 160%;animation:skyGradient 18s ease-in-out infinite alternate;
+function openCart(){document.getElementById("cart-overlay").classList.add("active")}
+function closeCart(e){const o=document.getElementById("cart-overlay");if(!e||e.target===o)o.classList.remove("active")}
+function checkout(){alert("SellAuth checkout will be connected here next.")}
+
+/* Scroll state: animations are strongest only while the user is actually scrolling. */
+let lastY=window.scrollY,lastT=performance.now(),scrollTimer;
+window.addEventListener("scroll",()=>{
+const now=performance.now(),y=window.scrollY;
+const speed=Math.min(Math.abs(y-lastY)/Math.max(now-lastT,1)*18,1.8);
+document.documentElement.style.setProperty("--scrollY",y+"px");
+document.documentElement.style.setProperty("--scrollSpeed",speed.toFixed(2));
+document.body.classList.add("is-scrolling");
+clearTimeout(scrollTimer);
+scrollTimer=setTimeout(()=>document.body.classList.remove("is-scrolling"),140);
+lastY=y;lastT=now;
+},{passive:true});
+
+/* Reveal sections/cards as they enter the viewport. */
+const revealTargets=document.querySelectorAll(".section-heading,.product-card,.category,.benefit,details,.final-cta");
+revealTargets.forEach(el=>el.classList.add("reveal"));
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add("visible");observer.unobserve(entry.target)}})
+},{threshold:.12,rootMargin:"0px 0px -45px 0px"});
+revealTargets.forEach(el=>observer.observe(el));
+
+/* Gold star particles */
+const canvas=document.getElementById("particles"),ctx=canvas.getContext("2d");
+let particles=[];
+function resizeCanvas(){
+const dpr=Math.min(devicePixelRatio||1,2);
+canvas.width=innerWidth*dpr;canvas.height=innerHeight*dpr;canvas.style.width=innerWidth+"px";canvas.style.height=innerHeight+"px";
+ctx.setTransform(dpr,0,0,dpr,0,0)
 }
-@keyframes skyGradient{0%{background-position:0% 20%}100%{background-position:100% 80%}}
-
-/* Visible heaven sky layer */
-.sky-scene{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0}
-.sun{
-position:absolute;width:170px;height:170px;border-radius:50%;top:8%;right:9%;
-background:radial-gradient(circle,#fffde9 0 18%,#ffe889 35%,#ffd85a 48%,rgba(255,210,70,.18) 68%,transparent 72%);
-box-shadow:0 0 45px rgba(255,218,91,.35),0 0 150px rgba(255,218,91,.20);
-transform:translate3d(0,calc(var(--scrollY)*.10),0);
-animation:sunBreath 5s ease-in-out infinite alternate;
+function createParticles(){
+const n=Math.min(70,Math.max(28,Math.floor(innerWidth/10)));
+particles=Array.from({length:n},()=>({x:Math.random()*innerWidth,y:Math.random()*innerHeight,s:Math.random()*1.7+.45,v:Math.random()*.42+.08,d:(Math.random()-.5)*.16,a:Math.random()*.35+.08,p:Math.random()*Math.PI*2}))
 }
-.sun-glow{
-position:absolute;width:620px;height:620px;border-radius:50%;top:-220px;right:-210px;
-background:radial-gradient(circle,rgba(255,220,96,.28),rgba(255,220,96,.08) 35%,transparent 68%);
-transform:translate3d(0,calc(var(--scrollY)*.05),0);
+function drawParticles(){
+ctx.clearRect(0,0,innerWidth,innerHeight);
+for(const p of particles){
+p.y+=p.v;p.x+=p.d;p.p+=.02;
+if(p.y>innerHeight+8){p.y=-8;p.x=Math.random()*innerWidth}
+if(p.x<-8)p.x=innerWidth+8;if(p.x>innerWidth+8)p.x=-8;
+const twinkle=p.a+(Math.sin(p.p)*.06);
+ctx.beginPath();ctx.arc(p.x,p.y,p.s,0,Math.PI*2);ctx.fillStyle=`rgba(190,157,47,${Math.max(.03,twinkle)})`;ctx.fill()
 }
-@keyframes sunBreath{to{transform:translate3d(0,calc(var(--scrollY)*.10),0) scale(1.06);filter:brightness(1.08)}}
-
-/* Cloud shapes */
-.cloud{position:absolute;width:250px;height:65px;border-radius:80px;background:rgba(255,255,255,.72);
-box-shadow:0 18px 45px rgba(105,91,52,.09);filter:blur(5px)}
-.cloud:before,.cloud:after{content:"";position:absolute;border-radius:50%;background:inherit}
-.cloud:before{width:105px;height:105px;left:30px;bottom:8px}
-.cloud:after{width:125px;height:125px;right:30px;bottom:0}
-.cloud-1{top:22%;left:-290px;transform:translateX(calc(var(--scrollY)*-.06));animation:cloudRight 32s linear infinite}
-.cloud-2{top:43%;right:-300px;transform:translateX(calc(var(--scrollY)*.04)) scale(.78);animation:cloudLeft 39s linear infinite}
-.cloud-3{top:69%;left:-320px;transform:scale(.56);opacity:.48;animation:cloudRight 48s linear infinite reverse}
-.cloud-4{top:84%;right:-320px;transform:scale(.62);opacity:.42;animation:cloudLeft 55s linear infinite reverse}
-@keyframes cloudRight{to{left:calc(100% + 250px)}}@keyframes cloudLeft{to{right:calc(100% + 250px)}}
-
-/* Subtle light rays */
-.sun-rays{position:absolute;top:-15%;right:-15%;width:700px;height:700px;opacity:.18;
-background:conic-gradient(from 210deg,transparent,rgba(255,224,117,.32),transparent 12%,rgba(255,224,117,.18),transparent 26%);
-filter:blur(8px);transform:rotate(calc(var(--scrollY)*.015deg));}
-
-#particles{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:3;opacity:.52}
-
-/* Content must sit above sky */
-.nav,main,footer{position:relative;z-index:5}
-.nav{height:104px;padding:0 6%;display:flex;align-items:center;justify-content:space-between;
-background:rgba(255,255,255,.70);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
-border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
-.logo{color:var(--ink);text-decoration:none;font-family:"Cormorant Garamond",serif;font-size:46px;letter-spacing:9px;font-weight:600}
-.cart-button{background:rgba(255,255,255,.62);border:1.5px solid rgba(180,145,37,.65);border-radius:999px;padding:16px 24px;font-size:16px;cursor:pointer}
-.cart-button span{color:var(--gold);margin-left:12px}
-
-.hero{min-height:calc(100vh - 104px);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:90px 20px 70px;position:relative}
-.hero-glow{position:absolute;width:min(850px,100vw);height:520px;background:radial-gradient(ellipse,rgba(255,226,116,.32),transparent 65%);filter:blur(20px);z-index:-1;transform:translate3d(0,calc(var(--scrollY)*.08),0)}
-.eyebrow{font-size:12px;letter-spacing:5px;color:#c5a52f;font-weight:600}
-.hero h1{font-family:"Cormorant Garamond",serif;font-size:clamp(78px,15vw,170px);line-height:.78;margin:32px 0 42px;font-weight:600;letter-spacing:-5px}
-.hero h1 span{display:block;color:var(--gold);text-shadow:0 5px 30px rgba(212,175,55,.18)}
-.hero-copy{font-size:20px;line-height:1.9;color:var(--muted)}
-.hero-actions{display:flex;gap:18px;margin:42px 0}.btn{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;padding:19px 34px;border-radius:999px;font-size:16px;transition:.35s}
-.btn:hover{transform:translateY(-4px);box-shadow:0 14px 35px rgba(30,25,10,.12)}.btn-dark{background:#24221c;color:#fff}.btn-light{background:rgba(255,255,255,.55);color:var(--ink);border:1px solid var(--line)}
-.trust-row{display:flex;gap:28px;color:#8f8a7d;font-size:13px;flex-wrap:wrap;justify-content:center}
-.scroll-cue{margin-top:65px;font-size:10px;letter-spacing:4px;color:#9d967f}.scroll-cue span{display:block;font-size:20px;margin-top:8px}
-
-/* Scroll-only animation: elements stay still until JS detects scrolling */
-.reveal{opacity:0;transform:translateY(42px) scale(.98);transition:opacity .75s ease,transform .75s cubic-bezier(.2,.8,.2,1)}
-.reveal.visible{opacity:1;transform:none}
-body.is-scrolling .scroll-react{transform:translateY(calc(var(--scrollSpeed)*-18px)) scale(calc(1 + min(var(--scrollSpeed),1)*.006));transition:transform .08s linear}
-body.is-scrolling .section-heading,.section-heading.scroll-react{will-change:transform}
-body.is-scrolling .section-heading{transform:translateY(calc(var(--scrollSpeed)*-8px));transition:transform .08s linear}
-
-/* Sections */
-.section{padding:130px 7%;position:relative}.section-heading{text-align:center;max-width:650px;margin:0 auto 65px}
-.section-heading h2,.final-cta h2{font-family:"Cormorant Garamond",serif;font-size:clamp(48px,7vw,82px);font-weight:600;line-height:.95;margin:18px 0}
-.section-heading>p:last-child{color:var(--muted);line-height:1.7}
-.products{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;max-width:1200px;margin:auto}
-.product-card{background:rgba(255,255,255,.64);border:1px solid rgba(30,25,10,.09);border-radius:28px;overflow:hidden;box-shadow:0 20px 60px rgba(80,65,20,.07);backdrop-filter:blur(10px);transition:.4s}
-.product-card:hover{transform:translateY(-9px);box-shadow:0 30px 70px rgba(80,65,20,.13)}
-.product-art{height:250px;position:relative;display:flex;align-items:flex-end;padding:22px;font-family:"Cormorant Garamond",serif;font-size:70px;color:rgba(255,255,255,.85)}
-.art-1{background:radial-gradient(circle at 70% 25%,#fff6bb,transparent 22%),linear-gradient(145deg,#171717,#5f5537 55%,#dfc55e)}
-.art-2{background:radial-gradient(circle at 30% 25%,#fff,transparent 18%),linear-gradient(145deg,#eee7d2,#d6b84d,#3c382c)}
-.art-3{background:radial-gradient(circle at 75% 25%,#fff7c7,transparent 16%),linear-gradient(145deg,#222018,#b9942e,#f4e4a8)}
-.product-info{padding:28px}.product-label{font-size:10px;letter-spacing:3px;color:#b5962e}.product-info h3{font-family:"Cormorant Garamond",serif;font-size:34px;margin:10px 0}.product-info>p:not(.product-label){color:var(--muted);font-size:14px;line-height:1.7;min-height:48px}
-.product-bottom{display:flex;align-items:center;justify-content:space-between;margin-top:24px}.product-bottom strong{font-size:20px}.product-bottom button,.checkout{border:0;background:#24221c;color:#fff;border-radius:999px;padding:13px 18px;cursor:pointer}
-
-.categories{background:rgba(255,255,255,.30)}.category-grid{max-width:1100px;margin:auto;display:grid;grid-template-columns:1fr 1fr}.category{padding:34px 8px;border-bottom:1px solid var(--line);font-size:13px;letter-spacing:3px;display:flex;justify-content:space-between;transition:.25s}.category:hover{color:#b28f20;padding-left:15px}.category span{font-size:20px;color:var(--gold)}
-.benefits{display:grid;grid-template-columns:repeat(3,1fr);gap:25px;max-width:1100px;margin:auto}.benefit{text-align:center;padding:35px;border:1px solid var(--line);border-radius:25px;background:rgba(255,255,255,.40)}.benefit span{color:var(--gold);font-size:25px}.benefit h3{font-family:"Cormorant Garamond",serif;font-size:35px;margin:12px}.benefit p{color:var(--muted);font-size:14px;line-height:1.7}
-.faq{max-width:850px;margin:auto}details{border-top:1px solid var(--line);padding:24px 0}details:last-child{border-bottom:1px solid var(--line)}summary{cursor:pointer;font-family:"Cormorant Garamond",serif;font-size:25px}details p{color:var(--muted);padding-top:15px;line-height:1.7}
-.final-cta{text-align:center;padding:150px 20px 170px;background:radial-gradient(ellipse at center,rgba(255,223,111,.26),transparent 60%)}.final-cta h2 span{color:var(--gold)}
-footer{padding:55px 7%;border-top:1px solid var(--line);text-align:center;background:rgba(255,255,255,.58)}.footer-logo{font-family:"Cormorant Garamond",serif;font-size:40px;letter-spacing:8px}footer p{color:var(--muted);margin:10px 0 22px}footer small{color:#aaa}
-
-.cart-overlay{position:fixed;inset:0;background:rgba(15,14,10,.35);backdrop-filter:blur(8px);z-index:50;opacity:0;visibility:hidden;transition:.3s}.cart-overlay.active{opacity:1;visibility:visible}
-.cart-panel{position:absolute;right:0;top:0;height:100%;width:min(440px,100%);background:#fffdf7;padding:55px 32px;box-shadow:-20px 0 60px rgba(0,0,0,.12);transform:translateX(100%);transition:.35s}.cart-overlay.active .cart-panel{transform:translateX(0)}
-.close-cart{position:absolute;right:24px;top:18px;background:none;border:0;font-size:34px;cursor:pointer}.cart-panel h2{font-family:"Cormorant Garamond",serif;font-size:50px;margin:12px 0 35px}.cart-item{display:flex;justify-content:space-between;padding:17px 0;border-bottom:1px solid var(--line);font-size:14px}.cart-total{display:flex;justify-content:space-between;font-size:18px;padding:25px 0}.cart-total strong{color:#b18e20}.checkout{width:100%;padding:17px;font-size:15px;margin-top:12px}
-
-@media(max-width:800px){
+requestAnimationFrame(drawParticles)
+}
+resizeCanvas();createParticles();drawParticles();
+addEventListener("resize",()=>{resizeCanvas();createParticles()});
+updateCart();
 .nav{height:82px;padding:0 20px}.logo{font-size:35px;letter-spacing:6px}.cart-button{padding:12px 17px}
 .hero{min-height:calc(100vh - 82px);padding-top:70px}.hero h1{font-size:clamp(70px,18vw,115px);margin:28px 0 35px}.hero-copy{font-size:17px}.hero-actions{width:100%;max-width:420px}.btn{flex:1;padding:17px 15px}.trust-row{flex-direction:column;gap:10px}
 .section{padding:95px 20px}.products{grid-template-columns:1fr;max-width:520px}.product-art{height:220px}.benefits{grid-template-columns:1fr;max-width:520px}.category-grid{grid-template-columns:1fr}
