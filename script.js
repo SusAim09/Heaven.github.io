@@ -1,105 +1,62 @@
-let cart = [];
+let cart=[];
 
-function addProduct(name, price) {
-  cart.push({ name, price });
-  updateCart();
-  openCart();
+function addProduct(name,price){cart.push({name,price});updateCart();openCart()}
+function updateCart(){
+const count=document.getElementById("cart-count"),items=document.getElementById("cart-items"),total=document.getElementById("cart-total");
+count.textContent=cart.length;
+if(!cart.length){items.innerHTML='<p style="color:#888;padding:10px 0;">Your cart is empty.</p>';total.textContent="0.00";return}
+let sum=0;
+items.innerHTML=cart.map(i=>{sum+=i.price;return `<div class="cart-item"><span>${i.name}</span><strong>$${i.price.toFixed(2)}</strong></div>`}).join("");
+total.textContent=sum.toFixed(2)
 }
+function openCart(){document.getElementById("cart-overlay").classList.add("active")}
+function closeCart(e){const o=document.getElementById("cart-overlay");if(!e||e.target===o)o.classList.remove("active")}
+function checkout(){alert("SellAuth checkout will be connected here next.")}
 
-function updateCart() {
-  const count = document.getElementById("cart-count");
-  const items = document.getElementById("cart-items");
-  const total = document.getElementById("cart-total");
+/* Scroll state: animations are strongest only while the user is actually scrolling. */
+let lastY=window.scrollY,lastT=performance.now(),scrollTimer;
+window.addEventListener("scroll",()=>{
+const now=performance.now(),y=window.scrollY;
+const speed=Math.min(Math.abs(y-lastY)/Math.max(now-lastT,1)*18,1.8);
+document.documentElement.style.setProperty("--scrollY",y+"px");
+document.documentElement.style.setProperty("--scrollSpeed",speed.toFixed(2));
+document.body.classList.add("is-scrolling");
+clearTimeout(scrollTimer);
+scrollTimer=setTimeout(()=>document.body.classList.remove("is-scrolling"),140);
+lastY=y;lastT=now;
+},{passive:true});
 
-  count.textContent = cart.length;
+/* Reveal sections/cards as they enter the viewport. */
+const revealTargets=document.querySelectorAll(".section-heading,.product-card,.category,.benefit,details,.final-cta");
+revealTargets.forEach(el=>el.classList.add("reveal"));
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add("visible");observer.unobserve(entry.target)}})
+},{threshold:.12,rootMargin:"0px 0px -45px 0px"});
+revealTargets.forEach(el=>observer.observe(el));
 
-  if (!cart.length) {
-    items.innerHTML = '<p style="color:#888;padding:10px 0;">Your cart is empty.</p>';
-    total.textContent = "0.00";
-    return;
-  }
-
-  let totalPrice = 0;
-  items.innerHTML = cart.map(item => {
-    totalPrice += item.price;
-    return `<div class="cart-item"><span>${item.name}</span><strong>$${item.price.toFixed(2)}</strong></div>`;
-  }).join("");
-
-  total.textContent = totalPrice.toFixed(2);
+/* Gold star particles */
+const canvas=document.getElementById("particles"),ctx=canvas.getContext("2d");
+let particles=[];
+function resizeCanvas(){
+const dpr=Math.min(devicePixelRatio||1,2);
+canvas.width=innerWidth*dpr;canvas.height=innerHeight*dpr;canvas.style.width=innerWidth+"px";canvas.style.height=innerHeight+"px";
+ctx.setTransform(dpr,0,0,dpr,0,0)
 }
-
-function openCart() {
-  document.getElementById("cart-overlay").classList.add("active");
+function createParticles(){
+const n=Math.min(70,Math.max(28,Math.floor(innerWidth/10)));
+particles=Array.from({length:n},()=>({x:Math.random()*innerWidth,y:Math.random()*innerHeight,s:Math.random()*1.7+.45,v:Math.random()*.42+.08,d:(Math.random()-.5)*.16,a:Math.random()*.35+.08,p:Math.random()*Math.PI*2}))
 }
-
-function closeCart(event) {
-  const overlay = document.getElementById("cart-overlay");
-  if (!event || event.target === overlay) overlay.classList.remove("active");
+function drawParticles(){
+ctx.clearRect(0,0,innerWidth,innerHeight);
+for(const p of particles){
+p.y+=p.v;p.x+=p.d;p.p+=.02;
+if(p.y>innerHeight+8){p.y=-8;p.x=Math.random()*innerWidth}
+if(p.x<-8)p.x=innerWidth+8;if(p.x>innerWidth+8)p.x=-8;
+const twinkle=p.a+(Math.sin(p.p)*.06);
+ctx.beginPath();ctx.arc(p.x,p.y,p.s,0,Math.PI*2);ctx.fillStyle=`rgba(190,157,47,${Math.max(.03,twinkle)})`;ctx.fill()
 }
-
-function checkout() {
-  alert("SellAuth checkout will be connected here next.");
+requestAnimationFrame(drawParticles)
 }
-
-window.addEventListener("scroll", () => {
-  document.documentElement.style.setProperty("--scroll", `${window.scrollY * 0.18}px`);
-});
-
-const canvas = document.getElementById("particles");
-const ctx = canvas.getContext("2d");
-let particles = [];
-
-function resizeCanvas() {
-  const dpr = Math.min(window.devicePixelRatio || 1, 2);
-  canvas.width = innerWidth * dpr;
-  canvas.height = innerHeight * dpr;
-  canvas.style.width = innerWidth + "px";
-  canvas.style.height = innerHeight + "px";
-  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-}
-
-function createParticles() {
-  const amount = Math.min(55, Math.max(22, Math.floor(innerWidth / 14)));
-  particles = Array.from({ length: amount }, () => ({
-    x: Math.random() * innerWidth,
-    y: Math.random() * innerHeight,
-    size: Math.random() * 1.8 + 0.5,
-    speed: Math.random() * 0.45 + 0.15,
-    drift: (Math.random() - 0.5) * 0.18,
-    alpha: Math.random() * 0.38 + 0.10
-  }));
-}
-
-function animateParticles() {
-  ctx.clearRect(0, 0, innerWidth, innerHeight);
-
-  for (const p of particles) {
-    p.y += p.speed;
-    p.x += p.drift;
-
-    if (p.y > innerHeight + 5) {
-      p.y = -5;
-      p.x = Math.random() * innerWidth;
-    }
-    if (p.x < -5) p.x = innerWidth + 5;
-    if (p.x > innerWidth + 5) p.x = -5;
-
-    ctx.beginPath();
-    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(184, 151, 45, ${p.alpha})`;
-    ctx.fill();
-  }
-
-  requestAnimationFrame(animateParticles);
-}
-
-resizeCanvas();
-createParticles();
-animateParticles();
-
-window.addEventListener("resize", () => {
-  resizeCanvas();
-  createParticles();
-});
-
+resizeCanvas();createParticles();drawParticles();
+addEventListener("resize",()=>{resizeCanvas();createParticles()});
 updateCart();
