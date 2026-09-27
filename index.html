@@ -12,11 +12,13 @@
 </head>
 <body>
 
+  <div class="ambient-orb orb-a" aria-hidden="true"></div>
+  <div class="ambient-orb orb-b" aria-hidden="true"></div>
   <canvas id="particles"></canvas>
 
   <div class="sky-scene" aria-hidden="true">
     <div class="sun"></div>
-    <div class="sun-glow"></div><div class="sun-rays"></div>
+    <div class="sun-glow"></div><div class="sun-rays"></div><div class="halo-ring halo-ring-1"></div><div class="halo-ring halo-ring-2"></div>
     <div class="cloud cloud-1"></div>
     <div class="cloud cloud-2"></div>
     <div class="cloud cloud-3"></div>
@@ -24,7 +26,7 @@
   </div>
 
   <header class="nav">
-    <a class="logo" href="#home">HEAVEN</a>
+    <a class="logo" href="#home"><span>HEAVEN</span><i>✦</i></a>
     <button class="cart-button" onclick="openCart()">
       Cart <span id="cart-count">0</span>
     </button>
@@ -33,7 +35,8 @@
   <main>
     <section class="hero" id="home">
       <div class="hero-glow"></div>
-      <p class="eyebrow">PREMIUM DIGITAL STORE</p>
+      <div class="hero-badge"><span class="badge-dot"></span> PREMIUM DIGITAL STORE <span>✦</span></div>
+      <p class="eyebrow">CURATED FOR THE CLOUDS</p>
       <h1>ENTER <span>HEAVEN</span></h1>
       <p class="hero-copy">Premium digital products.<br>Simple, secure and instant.</p>
 
@@ -43,16 +46,19 @@
       </div>
 
       <div class="trust-row">
-        <span>✦ Instant Delivery</span>
-        <span>✦ Secure Checkout</span>
-        <span>✦ Premium Quality</span>
+        <span><b>✦</b> Instant Delivery</span>
+        <span><b>✦</b> Secure Checkout</span>
+        <span><b>✦</b> Premium Quality</span>
       </div>
+
+      <div class="hero-orbit" aria-hidden="true"><span>✦</span><span>·</span><span>✧</span></div>
 
       <div class="scroll-cue">SCROLL <span>↓</span></div>
     </section>
 
     <section class="section scroll-react" id="shop">
       <div class="section-heading">
+        <div class="section-kicker">01 <span>—</span> THE COLLECTION</div>
         <p class="eyebrow">THE COLLECTION</p>
         <h2>Chosen for you.</h2>
         <p>Digital products made to be useful, simple and worth keeping.</p>
@@ -60,9 +66,9 @@
 
       <div class="products">
         <article class="product-card">
-          <div class="product-art art-1"><span>01</span></div>
+          <div class="product-art art-1"><div class="art-glow"></div><span>01</span><em>✦</em></div>
           <div class="product-info">
-            <p class="product-label">FEATURED</p>
+            <div class="mini-pill">✦ FEATURED</div><p class="product-label">FEATURED</p>
             <h3>Premium Product</h3>
             <p>A polished digital product for everyday use.</p>
             <div class="product-bottom">
@@ -73,9 +79,9 @@
         </article>
 
         <article class="product-card">
-          <div class="product-art art-2"><span>02</span></div>
+          <div class="product-art art-2"><div class="art-glow"></div><span>02</span><em>✧</em></div>
           <div class="product-info">
-            <p class="product-label">BUNDLE</p>
+            <div class="mini-pill">✧ BUNDLE</div><p class="product-label">BUNDLE</p>
             <h3>Heaven Bundle</h3>
             <p>A curated collection packed into one bundle.</p>
             <div class="product-bottom">
@@ -86,9 +92,9 @@
         </article>
 
         <article class="product-card">
-          <div class="product-art art-3"><span>03</span></div>
+          <div class="product-art art-3"><div class="art-glow"></div><span>03</span><em>✦</em></div>
           <div class="product-info">
-            <p class="product-label">ULTIMATE</p>
+            <div class="mini-pill">✦ ULTIMATE</div><p class="product-label">ULTIMATE</p>
             <h3>Ultimate Package</h3>
             <p>The complete premium collection in one package.</p>
             <div class="product-bottom">
@@ -100,8 +106,10 @@
       </div>
     </section>
 
+    <div class="gold-divider"><span>✦</span></div>
     <section class="section scroll-react categories" id="categories">
       <div class="section-heading">
+        <div class="section-kicker">02 <span>—</span> EXPLORE</div>
         <p class="eyebrow">EXPLORE</p>
         <h2>Find your place.</h2>
       </div>
@@ -113,7 +121,7 @@
       </div>
     </section>
 
-    <section class="section scroll-react benefits">
+    <section class="section scroll-react benefits"><div class="benefit-intro"><div class="section-kicker">03 <span>—</span> THE HEAVEN STANDARD</div><h2>Made with <span>intention.</span></h2></div>
       <div class="benefit"><span>✦</span><h3>Instant</h3><p>Get your digital product immediately after checkout.</p></div>
       <div class="benefit"><span>✦</span><h3>Secure</h3><p>Checkout is handled through a trusted payment flow.</p></div>
       <div class="benefit"><span>✦</span><h3>Premium</h3><p>Clean products with a focus on quality and simplicity.</p></div>
@@ -121,6 +129,7 @@
 
     <section class="section scroll-react faq">
       <div class="section-heading">
+        <div class="section-kicker">03 <span>—</span> QUESTIONS</div>
         <p class="eyebrow">QUESTIONS</p>
         <h2>Frequently asked.</h2>
       </div>
@@ -130,6 +139,7 @@
     </section>
 
     <section class="final-cta scroll-react">
+      <div class="cta-stars" aria-hidden="true">✦　✧　✦</div>
       <p class="eyebrow">WELCOME IN</p>
       <h2>Your next digital find<br><span>is waiting.</span></h2>
       <a class="btn btn-dark" href="#shop">Enter the collection</a>
@@ -137,7 +147,7 @@
   </main>
 
   <footer>
-    <div class="footer-logo">HEAVEN</div>
+    <div class="footer-logo">HEAVEN <span>✦</span></div>
     <p>Premium digital products.</p>
     <small>© 2026 HEAVEN. All rights reserved.</small>
   </footer>
@@ -158,5 +168,5 @@
 
   <script src="script.js"></script>
 </body>
-  </html>
-  
+                                                                       </html>
+                                                                       
