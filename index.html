@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>HEAVEN — Premium Digital Products</title>
+  <meta name="description" content="Premium digital products, bundles and instant delivery.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <header class="navbar">
+    <a href="#" class="logo">HEAVEN</a>
+
+    <nav>
+      <a href="#shop">Shop</a>
+      <a href="#categories">Categories</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+
+    <button class="cart-btn" onclick="openCart()">
+      Cart <span id="cart-count">0</span>
+    </button>
+  </header>
+
+  <main>
+
+    <section class="hero">
+      <div class="hero-glow"></div>
+
+      <p class="eyebrow">PREMIUM DIGITAL STORE</p>
+
+      <h1>ENTER<br><span>HEAVEN</span></h1>
+
+      <p class="hero-text">
+        Premium digital products.<br>
+        Simple, secure and instant.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#shop" class="btn primary">Explore Shop</a>
+        <a href="#categories" class="btn secondary">Categories</a>
+      </div>
+
+      <div class="trust">
+        <span>✦ Instant Delivery</span>
+        <span>✦ Secure Checkout</span>
+        <span>✦ Premium Quality</span>
+      </div>
+    </section>
+
+
+    <section id="shop" class="section">
+      <div class="section-heading">
+        <p class="eyebrow">FEATURED</p>
+        <h2>Discover Heaven</h2>
+        <p>Our most popular digital products.</p>
+      </div>
+
+      <div class="products">
+
+        <article class="product-card">
+          <div class="product-image">✦</div>
+          <p class="product-category">DIGITAL PRODUCT</p>
+          <h3>Premium Product</h3>
+          <p class="product-description">
+            A premium digital product ready for instant delivery.
+          </p>
+          <div class="product-bottom">
+            <strong>$2.99</strong>
+            <button onclick="addProduct('Premium Product', 2.99)">
+              Add
+            </button>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-image">✦✦</div>
+          <p class="product-category">BUNDLE</p>
+          <h3>Heaven Bundle</h3>
+          <p class="product-description">
+            A carefully selected collection of premium products.
+          </p>
+          <div class="product-bottom">
+            <strong>$4.99</strong>
+            <button onclick="addProduct('Heaven Bundle', 4.99)">
+              Add
+            </button>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-image">✦✦✦</div>
+          <p class="product-category">SPECIAL</p>
+          <h3>Ultimate Package</h3>
+          <p class="product-description">
+            Our complete premium package for the ultimate experience.
+          </p>
+          <div class="product-bottom">
+            <strong>$9.99</strong>
+            <button onclick="addProduct('Ultimate Package', 9.99)">
+              Add
+            </button>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+
+    <section id="categories" class="section categories-section">
+
+      <div class="section-heading">
+        <p class="eyebrow">EXPLORE</p>
+        <h2>Categories</h2>
+      </div>
+
+      <div class="categories">
+
+        <div class="category">
+          <span>01</span>
+          <h3>Digital Products</h3>
+          <p>Premium digital goods.</p>
+        </div>
+
+        <div class="category">
+          <span>02</span>
+          <h3>Bundles</h3>
+          <p>More value in one package.</p>
+        </div>
+
+        <div class="category">
+          <span>03</span>
+          <h3>Special Offers</h3>
+          <p>Limited deals and offers.</p>
+        </div>
+
+      </div>
+    </section>
+
+
+    <section class="section benefits">
+
+      <div class="section-heading">
+        <p class="eyebrow">WHY HEAVEN</p>
+        <h2>Made Simple</h2>
+      </div>
+
+      <div class="benefit-grid">
+
+        <div>
+          <span>✦</span>
+          <h3>Instant Delivery</h3>
+          <p>Get your digital products immediately after purchase.</p>
+        </div>
+
+        <div>
+          <span>✦</span>
+          <h3>Secure Checkout</h3>
+          <p>Checkout securely through our payment system.</p>
+        </div>
+
+        <div>
+          <span>✦</span>
+          <h3>Premium Quality</h3>
+          <p>Carefully selected products made for our customers.</p>
+        </div>
+
+      </div>
+    </section>
+
+
+    <section id="faq" class="section faq">
+
+      <div class="section-heading">
+        <p class="eyebrow">QUESTIONS</p>
+        <h2>FAQ</h2>
+      </div>
+
+      <details>
+        <summary>How do I receive my product?</summary>
+        <p>Digital products are delivered electronically after your purchase.</p>
+      </details>
+
+      <details>
+        <summary>How fast is delivery?</summary>
+        <p>Most products are delivered automatically after successful payment.</p>
+      </details>
+
+      <details>
+        <summary>What payment methods are available?</summary>
+        <p>Available payment methods are shown during checkout.</p>
+      </details>
+
+      <details>
+        <summary>Do I need an account?</summary>
+        <p>No account is required for the basic purchasing experience.</p>
+      </details>
+
+    </section>
+
+
+    <section class="final-cta">
+      <p class="eyebrow">YOUR NEXT DISCOVERY</p>
+      <h2>Find Something<br><span>Extraordinary.</span></h2>
+      <a href="#shop" class="btn primary">Explore Shop</a>
+    </section>
+
+  </main>
+
+
+  <footer>
+
+    <div class="footer-logo">HEAVEN</div>
+
+    <div class="footer-links">
+      <a href="#shop">Shop</a>
+      <a href="#categories">Categories</a>
+      <a href="#faq">FAQ</a>
+    </div>
+
+    <p>© 2026 HEAVEN. All rights reserved.</p>
+
+  </footer>
+
+
+  <!-- CART -->
+
+  <div id="cart-overlay" class="cart-overlay" onclick="closeCart(event)">
+
+    <div class="cart" onclick="event.stopPropagation()">
+
+      <div class="cart-header">
+        <h2>Your Cart</h2>
+        <button onclick="closeCart()">×</button>
+      </div>
+
+      <div id="cart-items"></div>
+
+      <div class="cart-total">
+        <span>Total</span>
+        <strong>$<span id="cart-total">0.00</span></strong>
+      </div>
+
+      <button class="checkout-btn" onclick="checkout()">
+        Continue to Checkout
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <script src="script.js"></script>
+
+</body>
+  </html>
