@@ -1,47 +1,47 @@
-/* Scroll state: animations are strongest only while the user is actually scrolling. */
-let lastY=window.scrollY,lastT=performance.now(),scrollTimer;
-window.addEventListener("scroll",()=>{
-const now=performance.now(),y=window.scrollY;
-const speed=Math.min(Math.abs(y-lastY)/Math.max(now-lastT,1)*18,1.8);
-document.documentElement.style.setProperty("--scrollY",y+"px");
-document.documentElement.style.setProperty("--scrollSpeed",speed.toFixed(2));
-document.body.classList.add("is-scrolling");
-clearTimeout(scrollTimer);
-scrollTimer=setTimeout(()=>document.body.classList.remove("is-scrolling"),140);
-lastY=y;lastT=now;
-},{passive:true});
+(() => {
+  const canvas = document.getElementById('particles');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let particles = [];
+  let dpr = Math.min(window.devicePixelRatio || 1, 2);
 
-/* Reveal sections/cards as they enter the viewport. */
-const revealTargets=document.querySelectorAll(".section-heading,.product-card,.category,.benefit,details,.final-cta");
-revealTargets.forEach(el=>el.classList.add("reveal"));
-const observer=new IntersectionObserver(entries=>{
-entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add("visible");observer.unobserve(entry.target)}})
-},{threshold:.12,rootMargin:"0px 0px -45px 0px"});
-revealTargets.forEach(el=>observer.observe(el));
+  function resize(){
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    canvas.width = Math.floor(innerWidth * dpr);
+    canvas.height = Math.floor(innerHeight * dpr);
+    canvas.style.width = innerWidth + 'px';
+    canvas.style.height = innerHeight + 'px';
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    const count = innerWidth < 650 ? 55 : 90;
+    particles = Array.from({length:count}, () => ({
+      x: Math.random()*innerWidth,
+      y: Math.random()*innerHeight,
+      r: Math.random()*2.5+0.8,
+      v: Math.random()*0.65+0.25,
+      drift: (Math.random()-.5)*0.22,
+      a: Math.random()*.45+.2
+    }));
+  }
+  function draw(){
+    ctx.clearRect(0,0,innerWidth,innerHeight);
+    for(const p of particles){
+      p.y += p.v; p.x += p.drift;
+      if(p.y > innerHeight+8){p.y=-8;p.x=Math.random()*innerWidth}
+      if(p.x < -8)p.x=innerWidth+8;
+      if(p.x > innerWidth+8)p.x=-8;
+      ctx.beginPath();
+      ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fillStyle=`rgba(183,139,37,${p.a})`;
+      ctx.shadowBlur=7; ctx.shadowColor='rgba(210,170,55,.55)';
+      ctx.fill();
+    }
+    ctx.shadowBlur=0;
+    requestAnimationFrame(draw);
+  }
+  resize(); addEventListener('resize',resize,{passive:true}); draw();
 
-/* Gold star particles */
-const canvas=document.getElementById("particles"),ctx=canvas.getContext("2d");
-let particles=[];
-function resizeCanvas(){
-const dpr=Math.min(devicePixelRatio||1,2);
-canvas.width=innerWidth*dpr;canvas.height=innerHeight*dpr;canvas.style.width=innerWidth+"px";canvas.style.height=innerHeight+"px";
-ctx.setTransform(dpr,0,0,dpr,0,0)
-}
-function createParticles(){
-const n=Math.min(120,Math.max(45,Math.floor(innerWidth/7)));
-particles=Array.from({length:n},()=>({x:Math.random()*innerWidth,y:Math.random()*innerHeight,s:Math.random()*2.1+.65,v:Math.random()*.62+.12,d:(Math.random()-.5)*.18,a:Math.random()*.42+.22,p:Math.random()*Math.PI*2}))
-}
-function drawParticles(){
-ctx.clearRect(0,0,innerWidth,innerHeight);
-for(const p of particles){
-p.y+=p.v;p.x+=p.d;p.p+=.02;
-if(p.y>innerHeight+8){p.y=-8;p.x=Math.random()*innerWidth}
-if(p.x<-8)p.x=innerWidth+8;if(p.x>innerWidth+8)p.x=-8;
-const twinkle=p.a+(Math.sin(p.p)*.06);
-ctx.beginPath();ctx.arc(p.x,p.y,p.s,0,Math.PI*2);ctx.fillStyle=`rgba(224,193,83,${Math.max(.10,twinkle)})`;ctx.fill()
-}
-requestAnimationFrame(drawParticles)
-}
-resizeCanvas();createParticles();drawParticles();
-addEventListener("resize",()=>{resizeCanvas();createParticles()});
-  
+  const observer = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); });
+  },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+})();
