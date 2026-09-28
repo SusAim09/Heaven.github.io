@@ -1,352 +1,337 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HEAVEN — Premium Digital Products</title>
-  <meta name="description" content="HEAVEN — premium digital products with instant delivery.">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#fbf5e8">
+  <meta name="description" content="HEAVEN — premium digital products.">
+  <title>HEAVEN — Premium Digital Store</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-  <div class="ambient-orb orb-a" aria-hidden="true"></div>
-  <div class="ambient-orb orb-b" aria-hidden="true"></div>
-  <canvas id="particles"></canvas>
-
-  <div class="sky-scene" aria-hidden="true">
+  <div class="sky" aria-hidden="true">
     <div class="sun"></div>
-    <div class="sun-glow"></div><div class="sun-rays"></div><div class="halo-ring halo-ring-1"></div><div class="halo-ring halo-ring-2"></div>
+    <div class="sun-rays"></div>
+    <div class="halo halo-one"></div>
+    <div class="halo halo-two"></div>
     <div class="cloud cloud-1"></div>
     <div class="cloud cloud-2"></div>
     <div class="cloud cloud-3"></div>
-    <div class="cloud cloud-4"></div>
+    <canvas id="particles"></canvas>
   </div>
 
-  <header class="nav">
-    <a class="logo" href="#home"><span>HEAVEN</span><i>✦</i></a>
-    <a class="cart-button" href="#shop">Shop Products <span>✦</span></a>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="HEAVEN home">HEAVEN <span>✦</span></a>
+    <a class="shop-link" href="#products">Shop Products <span>✦</span></a>
   </header>
 
-  <main>
-    <section class="hero" id="home">
-      <div class="hero-glow"></div>
-      <div class="hero-badge"><span class="badge-dot"></span> PREMIUM DIGITAL STORE <span>✦</span></div>
-      <p class="eyebrow">CURATED FOR THE CLOUDS</p>
+  <main id="top">
+    <section class="hero">
+      <div class="hero-badge">✦ CURATED DIGITAL ACCESS ✦</div>
       <h1>ENTER <span>HEAVEN</span></h1>
-      <p class="hero-copy">Premium digital products.<br>Simple, secure and instant.</p>
-
-      <div class="hero-actions">
-        <a class="btn btn-dark" href="#shop">Explore Shop</a>
-        <a class="btn btn-light" href="#categories">Categories</a>
-      </div>
-
-      <div class="trust-row">
-        <span><b>✦</b> Instant Delivery</span>
-        <span><b>✦</b> Secure Checkout</span>
-        <span><b>✦</b> Premium Quality</span>
-      </div>
-
-      <div class="hero-orbit" aria-hidden="true"><span>✦</span><span>·</span><span>✧</span></div>
-
-      <div class="scroll-cue">SCROLL <span>↓</span></div>
+      <p class="hero-lead">Premium digital products, beautifully presented and ready when you are.</p>
+      <a class="hero-btn" href="#products">Explore the collection <span>↓</span></a>
+      <div class="hero-note">Secure checkout powered by SellAuth</div>
     </section>
 
-    <section class="section scroll-react" id="shop">
-      <div class="section-heading">
-        <div class="section-kicker">01 <span>—</span> THE COLLECTION</div>
-        <p class="eyebrow">THE COLLECTION</p>
-        <h2>Chosen for you.</h2>
-        <p>Digital products made to be useful, simple and worth keeping.</p>
-      </div>
-
-      <div class="products products-large">
-        <article class="product-card" data-category="DISCORD TOOLS">
-          <div class="product-art art-1"><div class="art-glow"></div><span>01</span><em>✦</em><b class="product-icon">✦</b></div>
-          <div class="product-info">
-            <div class="mini-pill">✦ DISCORD TOOLS</div>
-            <p class="product-label">DISCORD TOOLS</p>
-            <h3>Discord Tools Ultra High Quality</h3>
-            <p>High-quality Discord tools and digital resources.</p>
-            <div class="product-bottom">
-              <strong>View price</strong>
-              <a class="buy-now" href="https://heaven-supplier.mysellauth.com/product/discord-tools-ultra-high-quality">Buy Now <span>↗</span></a>
-            </div>
-          </div>
-        </article>
-        <article class="product-card" data-category="STREAMING">
-          <div class="product-art art-2"><div class="art-glow"></div><span>02</span><em>✧</em><b class="product-icon">✦</b></div>
-          <div class="product-info">
-            <div class="mini-pill">✦ STREAMING</div>
-            <p class="product-label">STREAMING</p>
-            <h3>Crunchyroll Lifetime</h3>
-            <p>Lifetime access product for Crunchyroll.</p>
-            <div class="product-bottom">
-              <strong>View price</strong>
-              <a class="buy-now" href="https://heaven-supplier.mysellauth.com/product/crunchyroll-lifetime">Buy Now <span>↗</span></a>
-            </div>
-          </div>
-        </article>
-        <article class="product-card" data-category="STREAMING">
-          <div class="product-art art-3"><div class="art-glow"></div><span>03</span><em>✦</em><b class="product-icon">✦</b></div>
-          <div class="product-info">
-            <div class="mini-pill">✦ STREAMING</div>
-            <p class="product-label">STREAMING</p>
-            <h3>Spotify Premium Lifetime</h3>
-            <p>Premium Spotify lifetime product.</p>
-            <div class="product-bottom">
-              <strong>View price</strong>
-              <a class="buy-now" href="https://heaven-supplier.mysellauth.com/product/spotify-premium-lifetime">Buy Now <span>↗</span></a>
-            </div>
-          </div>
-        </article>
-        <article class="product-card" data-category="GAMING">
-          <div class="product-art art-1"><div class="art-glow"></div><span>04</span><em>✧</em><b class="product-icon">✦</b></div>
-          <div class="product-info">
-            <div class="mini-pill">✦ GAMING</div>
-            <p class="product-label">GAMING</p>
-            <h3>Steam Lifetime Paid Games</h3>
-            <p>Steam lifetime access product with paid games.</p>
-            <div class="product-bottom">
-              <strong>View price</strong>
-              <a class="buy-now" href="https://heaven-supplier.mysellauth.com/product/steam-lifetime-paidfree-games">Buy Now <span>↗</span></a>
-            </div>
-          </div>
-        </article>
-        <article class="product-card" data-category="DISCORD">
-          <div class="product-art art-2"><div class="art-glow"></div><span>05</span><em>✦</em><b class="product-icon">✦</b></div>
-          <div class="product-info">
-            <div class="mini-pill">✦ DISCORD</div>
-            <p class="product-label">DISCORD</p>
-            <h3>Discord Nitro Premium Giftlink</h3>
-            <p>Discord Nitro premium giftlink product.</p>
-            <div class="product-bottom">
-              <strong>View price</strong>
-              <a class="buy-now" href="https://heaven-supplier.mysellauth.com/product/discord-nitro-premium-giftlink">Buy Now <span>↗</span></a>
-            </div>
-          </div>
-        </article>
-        <article class="product-card" data-category="STREAMING">
-          <div class="product-art art-3"><div class="art-glow"></div><span>06</span><em>✧</em><b class="product-icon">✦</b></div>
-          <div class="product-info">
-            <div class="mini-pill">✦ STREAMING</div>
-            <p class="product-label">STREAMING</p>
-            <h3>Netflix Lifetime</h3>
-            <p>Netflix lifetime digital product.</p>
-            <div class="product-bottom">
-              <strong>View price</strong>
-              <a class="buy-now" href="https://heaven-supplier.mysellauth.com/product/netflix-lifetime">Buy Now <span>↗</span></a>
-            </div>
-          </div>
-        </article>
-        <article class="product-card" data-category="DISCORD">
-          <div class="product-art art-1"><div class="art-glow"></div><span>07</span><em>✦</em><b class="product-icon">✦</b></div>
-          <div class="product-info">
-            <div class="mini-pill">✦ DISCORD</div>
-            <p class="product-label">DISCORD</p>
-            <h3>Server Boosts 14×1</h3>
-            <p>Discord server boost product.</p>
-            <div class="product-bottom">
-              <strong>View price</strong>
-              <a class="buy-now" href="https://heaven-supplier.mysellauth.com/product/server-boosts-141">Buy Now <span>↗</span></a>
-            </div>
-          </div>
-        </article>
-        <article class="product-card" data-category="STREAMING">
-          <div class="product-art art-2"><div class="art-glow"></div><span>08</span><em>✧</em><b class="product-icon">✦</b></div>
-          <div class="product-info">
-            <div class="mini-pill">✦ STREAMING</div>
-            <p class="product-label">STREAMING</p>
-            <h3>Prime Video</h3>
-            <p>Prime Video digital product.</p>
-            <div class="product-bottom">
-              <strong>View price</strong>
-              <a class="buy-now" href="https://heaven-supplier.mysellauth.com/product/prime-video">Buy Now <span>↗</span></a>
-            </div>
-          </div>
-        </article>
-        <article class="product-card" data-category="STREAMING">
-          <div class="product-art art-3"><div class="art-glow"></div><span>09</span><em>✦</em><b class="product-icon">✦</b></div>
-          <div class="product-info">
-            <div class="mini-pill">✦ STREAMING</div>
-            <p class="product-label">STREAMING</p>
-            <h3>Disney Lifetime</h3>
-            <p>Disney lifetime digital product.</p>
-            <div class="product-bottom">
-              <strong>View price</strong>
-              <a class="buy-now" href="https://heaven-supplier.mysellauth.com/product/disney-lifetime">Buy Now <span>↗</span></a>
-            </div>
-          </div>
-        </article>
-        <article class="product-card" data-category="CREATOR TOOLS">
-          <div class="product-art art-1"><div class="art-glow"></div><span>10</span><em>✧</em><b class="product-icon">✦</b></div>
-          <div class="product-info">
-            <div class="mini-pill">✦ CREATOR TOOLS</div>
-            <p class="product-label">CREATOR TOOLS</p>
-            <h3>CapCut Lifetime</h3>
-            <p>CapCut lifetime product for app use.</p>
-            <div class="product-bottom">
-              <strong>View price</strong>
-              <a class="buy-now" href="https://heaven-supplier.mysellauth.com/product/capcut-lifetime-works-on-app">Buy Now <span>↗</span></a>
-            </div>
-          </div>
-        </article>
-        <article class="product-card" data-category="AI TOOLS">
-          <div class="product-art art-2"><div class="art-glow"></div><span>11</span><em>✦</em><b class="product-icon">✦</b></div>
-          <div class="product-info">
-            <div class="mini-pill">✦ AI TOOLS</div>
-            <p class="product-label">AI TOOLS</p>
-            <h3>ChatGPT Unlimited</h3>
-            <p>ChatGPT unlimited digital product.</p>
-            <div class="product-bottom">
-              <strong>View price</strong>
-              <a class="buy-now" href="https://heaven-supplier.mysellauth.com/product/chatgpt-unlimited">Buy Now <span>↗</span></a>
-            </div>
-          </div>
-        </article>
-        <article class="product-card" data-category="STREAMING">
-          <div class="product-art art-3"><div class="art-glow"></div><span>12</span><em>✧</em><b class="product-icon">✦</b></div>
-          <div class="product-info">
-            <div class="mini-pill">✦ STREAMING</div>
-            <p class="product-label">STREAMING</p>
-            <h3>YouTube Premium Full Access Lifetime</h3>
-            <p>YouTube Premium full-access lifetime product.</p>
-            <div class="product-bottom">
-              <strong>View price</strong>
-              <a class="buy-now" href="https://heaven-supplier.mysellauth.com/product/youtube-premium-full-access-lifetime">Buy Now <span>↗</span></a>
-            </div>
-          </div>
-        </article>
-        <article class="product-card" data-category="STREAMING">
-          <div class="product-art art-1"><div class="art-glow"></div><span>13</span><em>✦</em><b class="product-icon">✦</b></div>
-          <div class="product-info">
-            <div class="mini-pill">✦ STREAMING</div>
-            <p class="product-label">STREAMING</p>
-            <h3>Paramount Lifetime</h3>
-            <p>Paramount lifetime digital product.</p>
-            <div class="product-bottom">
-              <strong>View price</strong>
-              <a class="buy-now" href="https://heaven-supplier.mysellauth.com/product/paramount-lifetime">Buy Now <span>↗</span></a>
-            </div>
-          </div>
-        </article>
-        <article class="product-card" data-category="LEARNING">
-          <div class="product-art art-2"><div class="art-glow"></div><span>14</span><em>✧</em><b class="product-icon">✦</b></div>
-          <div class="product-info">
-            <div class="mini-pill">✦ LEARNING</div>
-            <p class="product-label">LEARNING</p>
-            <h3>Duolingo Lifetime</h3>
-            <p>Duolingo lifetime digital product.</p>
-            <div class="product-bottom">
-              <strong>View price</strong>
-              <a class="buy-now" href="https://heaven-supplier.mysellauth.com/product/duolingo-lifetime">Buy Now <span>↗</span></a>
-            </div>
-          </div>
-        </article>
-        <article class="product-card" data-category="VPN">
-          <div class="product-art art-3"><div class="art-glow"></div><span>15</span><em>✦</em><b class="product-icon">✦</b></div>
-          <div class="product-info">
-            <div class="mini-pill">✦ VPN</div>
-            <p class="product-label">VPN</p>
-            <h3>ExpressVPN Phone Lifetime</h3>
-            <p>ExpressVPN phone lifetime product.</p>
-            <div class="product-bottom">
-              <strong>View price</strong>
-              <a class="buy-now" href="https://heaven-supplier.mysellauth.com/product/expressvpn-phone-lifetime">Buy Now <span>↗</span></a>
-            </div>
-          </div>
-        </article>
-        <article class="product-card" data-category="VPN">
-          <div class="product-art art-1"><div class="art-glow"></div><span>16</span><em>✧</em><b class="product-icon">✦</b></div>
-          <div class="product-info">
-            <div class="mini-pill">✦ VPN</div>
-            <p class="product-label">VPN</p>
-            <h3>CyberGhost VPN Lifetime</h3>
-            <p>CyberGhost VPN lifetime digital product.</p>
-            <div class="product-bottom">
-              <strong>View price</strong>
-              <a class="buy-now" href="https://heaven-supplier.mysellauth.com/product/cyberghost-vpn-lifetime">Buy Now <span>↗</span></a>
-            </div>
-          </div>
-        </article>
-        <article class="product-card" data-category="VPN">
-          <div class="product-art art-2"><div class="art-glow"></div><span>17</span><em>✦</em><b class="product-icon">✦</b></div>
-          <div class="product-info">
-            <div class="mini-pill">✦ VPN</div>
-            <p class="product-label">VPN</p>
-            <h3>NordVPN Lifetime</h3>
-            <p>NordVPN lifetime digital product.</p>
-            <div class="product-bottom">
-              <strong>View price</strong>
-              <a class="buy-now" href="https://heaven-supplier.mysellauth.com/product/nord-vpn-lifetime">Buy Now <span>↗</span></a>
-            </div>
-          </div>
-        </article>
-        <article class="product-card" data-category="SPORTS">
-          <div class="product-art art-3"><div class="art-glow"></div><span>18</span><em>✧</em><b class="product-icon">✦</b></div>
-          <div class="product-info">
-            <div class="mini-pill">✦ SPORTS</div>
-            <p class="product-label">SPORTS</p>
-            <h3>UFC Lifetime</h3>
-            <p>UFC lifetime digital product.</p>
-            <div class="product-bottom">
-              <strong>View price</strong>
-              <a class="buy-now" href="https://heaven-supplier.mysellauth.com/product/ufc-lifetime">Buy Now <span>↗</span></a>
-            </div>
-          </div>
-        </article>
-      </div>
+    <section class="section-intro reveal" id="products">
+      <p class="eyebrow">THE COLLECTION</p>
+      <h2>Find something <span>worth keeping.</span></h2>
+      <p>Choose a product below to open its dedicated SellAuth checkout page.</p>
     </section>
 
-    <div class="gold-divider"><span>✦</span></div>
-    <section class="section scroll-react categories" id="categories">
-      <div class="section-heading">
-        <div class="section-kicker">02 <span>—</span> EXPLORE</div>
-        <p class="eyebrow">EXPLORE</p>
-        <h2>Find your place.</h2>
-      </div>
-      <div class="category-grid">
-        <div class="category">DIGITAL GOODS <span>→</span></div>
-        <div class="category">TOOLS <span>→</span></div>
-        <div class="category">BUNDLES <span>→</span></div>
-        <div class="category">PREMIUM <span>→</span></div>
-      </div>
+    <section class="products" aria-label="HEAVEN products">
+      
+      <article class="product-card reveal">
+        <div class="cloud-aura"></div>
+        <div class="product-number">01</div>
+        <div class="product-icon">✦</div>
+        <div class="product-content">
+          <span class="product-kicker">HEAVEN • 01</span>
+          <h3>Discord Tools</h3>
+          <p class="product-sub">Ultra High Quality</p>
+          <p class="product-desc">Premium digital access delivered through our secure SellAuth checkout.</p>
+          <a class="buy-btn" href="https://heaven-supplier.mysellauth.com/product/discord-tools-ultra-high-quality" rel="noopener">
+            <span>View & Buy</span><span class="arrow">↗</span>
+          </a>
+        </div>
+      </article>
+
+      <article class="product-card reveal">
+        <div class="cloud-aura"></div>
+        <div class="product-number">02</div>
+        <div class="product-icon">✦</div>
+        <div class="product-content">
+          <span class="product-kicker">HEAVEN • 02</span>
+          <h3>Crunchyroll</h3>
+          <p class="product-sub">Lifetime</p>
+          <p class="product-desc">Premium digital access delivered through our secure SellAuth checkout.</p>
+          <a class="buy-btn" href="https://heaven-supplier.mysellauth.com/product/crunchyroll-lifetime" rel="noopener">
+            <span>View & Buy</span><span class="arrow">↗</span>
+          </a>
+        </div>
+      </article>
+
+      <article class="product-card reveal">
+        <div class="cloud-aura"></div>
+        <div class="product-number">03</div>
+        <div class="product-icon">✦</div>
+        <div class="product-content">
+          <span class="product-kicker">HEAVEN • 03</span>
+          <h3>Spotify Premium</h3>
+          <p class="product-sub">Lifetime</p>
+          <p class="product-desc">Premium digital access delivered through our secure SellAuth checkout.</p>
+          <a class="buy-btn" href="https://heaven-supplier.mysellauth.com/product/spotify-premium-lifetime" rel="noopener">
+            <span>View & Buy</span><span class="arrow">↗</span>
+          </a>
+        </div>
+      </article>
+
+      <article class="product-card reveal">
+        <div class="cloud-aura"></div>
+        <div class="product-number">04</div>
+        <div class="product-icon">✦</div>
+        <div class="product-content">
+          <span class="product-kicker">HEAVEN • 04</span>
+          <h3>Steam</h3>
+          <p class="product-sub">Lifetime Paid/Free Games</p>
+          <p class="product-desc">Premium digital access delivered through our secure SellAuth checkout.</p>
+          <a class="buy-btn" href="https://heaven-supplier.mysellauth.com/product/steam-lifetime-paidfree-games" rel="noopener">
+            <span>View & Buy</span><span class="arrow">↗</span>
+          </a>
+        </div>
+      </article>
+
+      <article class="product-card reveal">
+        <div class="cloud-aura"></div>
+        <div class="product-number">05</div>
+        <div class="product-icon">✦</div>
+        <div class="product-content">
+          <span class="product-kicker">HEAVEN • 05</span>
+          <h3>Discord Nitro</h3>
+          <p class="product-sub">Premium Gift Link</p>
+          <p class="product-desc">Premium digital access delivered through our secure SellAuth checkout.</p>
+          <a class="buy-btn" href="https://heaven-supplier.mysellauth.com/product/discord-nitro-premium-giftlink" rel="noopener">
+            <span>View & Buy</span><span class="arrow">↗</span>
+          </a>
+        </div>
+      </article>
+
+      <article class="product-card reveal">
+        <div class="cloud-aura"></div>
+        <div class="product-number">06</div>
+        <div class="product-icon">✦</div>
+        <div class="product-content">
+          <span class="product-kicker">HEAVEN • 06</span>
+          <h3>Netflix</h3>
+          <p class="product-sub">Lifetime</p>
+          <p class="product-desc">Premium digital access delivered through our secure SellAuth checkout.</p>
+          <a class="buy-btn" href="https://heaven-supplier.mysellauth.com/product/netflix-lifetime" rel="noopener">
+            <span>View & Buy</span><span class="arrow">↗</span>
+          </a>
+        </div>
+      </article>
+
+      <article class="product-card reveal">
+        <div class="cloud-aura"></div>
+        <div class="product-number">07</div>
+        <div class="product-icon">✦</div>
+        <div class="product-content">
+          <span class="product-kicker">HEAVEN • 07</span>
+          <h3>Server Boosts</h3>
+          <p class="product-sub">14 Boosts</p>
+          <p class="product-desc">Premium digital access delivered through our secure SellAuth checkout.</p>
+          <a class="buy-btn" href="https://heaven-supplier.mysellauth.com/product/server-boosts-141" rel="noopener">
+            <span>View & Buy</span><span class="arrow">↗</span>
+          </a>
+        </div>
+      </article>
+
+      <article class="product-card reveal">
+        <div class="cloud-aura"></div>
+        <div class="product-number">08</div>
+        <div class="product-icon">✦</div>
+        <div class="product-content">
+          <span class="product-kicker">HEAVEN • 08</span>
+          <h3>Prime Video</h3>
+          <p class="product-sub">Premium Access</p>
+          <p class="product-desc">Premium digital access delivered through our secure SellAuth checkout.</p>
+          <a class="buy-btn" href="https://heaven-supplier.mysellauth.com/product/prime-video" rel="noopener">
+            <span>View & Buy</span><span class="arrow">↗</span>
+          </a>
+        </div>
+      </article>
+
+      <article class="product-card reveal">
+        <div class="cloud-aura"></div>
+        <div class="product-number">09</div>
+        <div class="product-icon">✦</div>
+        <div class="product-content">
+          <span class="product-kicker">HEAVEN • 09</span>
+          <h3>Disney</h3>
+          <p class="product-sub">Lifetime</p>
+          <p class="product-desc">Premium digital access delivered through our secure SellAuth checkout.</p>
+          <a class="buy-btn" href="https://heaven-supplier.mysellauth.com/product/disney-lifetime" rel="noopener">
+            <span>View & Buy</span><span class="arrow">↗</span>
+          </a>
+        </div>
+      </article>
+
+      <article class="product-card reveal">
+        <div class="cloud-aura"></div>
+        <div class="product-number">10</div>
+        <div class="product-icon">✦</div>
+        <div class="product-content">
+          <span class="product-kicker">HEAVEN • 10</span>
+          <h3>CapCut</h3>
+          <p class="product-sub">Lifetime — App</p>
+          <p class="product-desc">Premium digital access delivered through our secure SellAuth checkout.</p>
+          <a class="buy-btn" href="https://heaven-supplier.mysellauth.com/product/capcut-lifetime-works-on-app" rel="noopener">
+            <span>View & Buy</span><span class="arrow">↗</span>
+          </a>
+        </div>
+      </article>
+
+      <article class="product-card reveal">
+        <div class="cloud-aura"></div>
+        <div class="product-number">11</div>
+        <div class="product-icon">✦</div>
+        <div class="product-content">
+          <span class="product-kicker">HEAVEN • 11</span>
+          <h3>ChatGPT</h3>
+          <p class="product-sub">Unlimited</p>
+          <p class="product-desc">Premium digital access delivered through our secure SellAuth checkout.</p>
+          <a class="buy-btn" href="https://heaven-supplier.mysellauth.com/product/chatgpt-unlimited" rel="noopener">
+            <span>View & Buy</span><span class="arrow">↗</span>
+          </a>
+        </div>
+      </article>
+
+      <article class="product-card reveal">
+        <div class="cloud-aura"></div>
+        <div class="product-number">12</div>
+        <div class="product-icon">✦</div>
+        <div class="product-content">
+          <span class="product-kicker">HEAVEN • 12</span>
+          <h3>YouTube Premium</h3>
+          <p class="product-sub">Full Access — Lifetime</p>
+          <p class="product-desc">Premium digital access delivered through our secure SellAuth checkout.</p>
+          <a class="buy-btn" href="https://heaven-supplier.mysellauth.com/product/youtube-premium-full-access-lifetime" rel="noopener">
+            <span>View & Buy</span><span class="arrow">↗</span>
+          </a>
+        </div>
+      </article>
+
+      <article class="product-card reveal">
+        <div class="cloud-aura"></div>
+        <div class="product-number">13</div>
+        <div class="product-icon">✦</div>
+        <div class="product-content">
+          <span class="product-kicker">HEAVEN • 13</span>
+          <h3>Paramount+</h3>
+          <p class="product-sub">Lifetime</p>
+          <p class="product-desc">Premium digital access delivered through our secure SellAuth checkout.</p>
+          <a class="buy-btn" href="https://heaven-supplier.mysellauth.com/product/paramount-lifetime" rel="noopener">
+            <span>View & Buy</span><span class="arrow">↗</span>
+          </a>
+        </div>
+      </article>
+
+      <article class="product-card reveal">
+        <div class="cloud-aura"></div>
+        <div class="product-number">14</div>
+        <div class="product-icon">✦</div>
+        <div class="product-content">
+          <span class="product-kicker">HEAVEN • 14</span>
+          <h3>Duolingo</h3>
+          <p class="product-sub">Lifetime</p>
+          <p class="product-desc">Premium digital access delivered through our secure SellAuth checkout.</p>
+          <a class="buy-btn" href="https://heaven-supplier.mysellauth.com/product/duolingo-lifetime" rel="noopener">
+            <span>View & Buy</span><span class="arrow">↗</span>
+          </a>
+        </div>
+      </article>
+
+      <article class="product-card reveal">
+        <div class="cloud-aura"></div>
+        <div class="product-number">15</div>
+        <div class="product-icon">✦</div>
+        <div class="product-content">
+          <span class="product-kicker">HEAVEN • 15</span>
+          <h3>ExpressVPN</h3>
+          <p class="product-sub">Phone — Lifetime</p>
+          <p class="product-desc">Premium digital access delivered through our secure SellAuth checkout.</p>
+          <a class="buy-btn" href="https://heaven-supplier.mysellauth.com/product/expressvpn-phone-lifetime" rel="noopener">
+            <span>View & Buy</span><span class="arrow">↗</span>
+          </a>
+        </div>
+      </article>
+
+      <article class="product-card reveal">
+        <div class="cloud-aura"></div>
+        <div class="product-number">16</div>
+        <div class="product-icon">✦</div>
+        <div class="product-content">
+          <span class="product-kicker">HEAVEN • 16</span>
+          <h3>CyberGhost VPN</h3>
+          <p class="product-sub">Lifetime</p>
+          <p class="product-desc">Premium digital access delivered through our secure SellAuth checkout.</p>
+          <a class="buy-btn" href="https://heaven-supplier.mysellauth.com/product/cyberghost-vpn-lifetime" rel="noopener">
+            <span>View & Buy</span><span class="arrow">↗</span>
+          </a>
+        </div>
+      </article>
+
+      <article class="product-card reveal">
+        <div class="cloud-aura"></div>
+        <div class="product-number">17</div>
+        <div class="product-icon">✦</div>
+        <div class="product-content">
+          <span class="product-kicker">HEAVEN • 17</span>
+          <h3>NordVPN</h3>
+          <p class="product-sub">Lifetime</p>
+          <p class="product-desc">Premium digital access delivered through our secure SellAuth checkout.</p>
+          <a class="buy-btn" href="https://heaven-supplier.mysellauth.com/product/nord-vpn-lifetime" rel="noopener">
+            <span>View & Buy</span><span class="arrow">↗</span>
+          </a>
+        </div>
+      </article>
+
+      <article class="product-card reveal">
+        <div class="cloud-aura"></div>
+        <div class="product-number">18</div>
+        <div class="product-icon">✦</div>
+        <div class="product-content">
+          <span class="product-kicker">HEAVEN • 18</span>
+          <h3>UFC</h3>
+          <p class="product-sub">Lifetime</p>
+          <p class="product-desc">Premium digital access delivered through our secure SellAuth checkout.</p>
+          <a class="buy-btn" href="https://heaven-supplier.mysellauth.com/product/ufc-lifetime" rel="noopener">
+            <span>View & Buy</span><span class="arrow">↗</span>
+          </a>
+        </div>
+      </article>
+
     </section>
 
-    <section class="section scroll-react benefits"><div class="benefit-intro"><div class="section-kicker">03 <span>—</span> THE HEAVEN STANDARD</div><h2>Made with <span>intention.</span></h2></div>
-      <div class="benefit"><span>✦</span><h3>Instant</h3><p>Get your digital product immediately after checkout.</p></div>
-      <div class="benefit"><span>✦</span><h3>Secure</h3><p>Checkout is handled through a trusted payment flow.</p></div>
-      <div class="benefit"><span>✦</span><h3>Premium</h3><p>Clean products with a focus on quality and simplicity.</p></div>
-    </section>
-
-    <section class="section scroll-react faq">
-      <div class="section-heading">
-        <div class="section-kicker">03 <span>—</span> QUESTIONS</div>
-        <p class="eyebrow">QUESTIONS</p>
-        <h2>Frequently asked.</h2>
+    <section class="final-cta reveal">
+      <div class="cta-cloud">
+        <p class="eyebrow">WELCOME TO HEAVEN</p>
+        <h2>Good things are <span>closer than they look.</span></h2>
+        <a class="hero-btn" href="#products">Browse products <span>↓</span></a>
       </div>
-      <details><summary>How do I receive my product?</summary><p>Digital products are delivered after successful checkout.</p></details>
-      <details><summary>Is delivery instant?</summary><p>For supported products, delivery is designed to be automatic.</p></details>
-      <details><summary>Can I get help with an order?</summary><p>Use the support contact provided with your order or storefront.</p></details>
-    </section>
-
-    <section class="final-cta scroll-react">
-      <div class="cta-stars" aria-hidden="true">✦　✧　✦</div>
-      <p class="eyebrow">WELCOME IN</p>
-      <h2>Your next digital find<br><span>is waiting.</span></h2>
-      <a class="btn btn-dark" href="#shop">Enter the collection</a>
     </section>
   </main>
 
-  <footer>
-    <div class="footer-logo">HEAVEN <span>✦</span></div>
-    <p>Premium digital products.</p>
-    <small>© 2026 HEAVEN. All rights reserved.</small>
+  <footer class="footer">
+    <span>HEAVEN ✦</span>
+    <span>Premium digital store</span>
   </footer>
 
   <script src="script.js"></script>
 </body>
-  </html>
-  
+            </html>
+        
