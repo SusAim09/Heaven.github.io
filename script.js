@@ -1,18 +1,3 @@
-let cart=[];
-
-function addProduct(name,price){cart.push({name,price});updateCart();openCart()}
-function updateCart(){
-const count=document.getElementById("cart-count"),items=document.getElementById("cart-items"),total=document.getElementById("cart-total");
-count.textContent=cart.length;
-if(!cart.length){items.innerHTML='<p style="color:#888;padding:10px 0;">Your cart is empty.</p>';total.textContent="0.00";return}
-let sum=0;
-items.innerHTML=cart.map(i=>{sum+=i.price;return `<div class="cart-item"><span>${i.name}</span><strong>$${i.price.toFixed(2)}</strong></div>`}).join("");
-total.textContent=sum.toFixed(2)
-}
-function openCart(){document.getElementById("cart-overlay").classList.add("active")}
-function closeCart(e){const o=document.getElementById("cart-overlay");if(!e||e.target===o)o.classList.remove("active")}
-function checkout(){alert("SellAuth checkout will be connected here next.")}
-
 /* Scroll state: animations are strongest only while the user is actually scrolling. */
 let lastY=window.scrollY,lastT=performance.now(),scrollTimer;
 window.addEventListener("scroll",()=>{
@@ -59,4 +44,3 @@ requestAnimationFrame(drawParticles)
 }
 resizeCanvas();createParticles();drawParticles();
 addEventListener("resize",()=>{resizeCanvas();createParticles()});
-updateCart();
