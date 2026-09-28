@@ -45,3 +45,19 @@
   },{threshold:.12});
   document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 })();
+
+// Category filters
+(() => {
+  const buttons = document.querySelectorAll('.filter-btn');
+  const cards = document.querySelectorAll('.product-card');
+  buttons.forEach(btn => btn.addEventListener('click', () => {
+    const filter = btn.dataset.filter;
+    buttons.forEach(b => b.classList.toggle('active', b === btn));
+    cards.forEach(card => {
+      const show = filter === 'all' || card.dataset.category === filter;
+      card.classList.toggle('is-hidden', !show);
+      if (show) card.classList.add('reveal');
+    });
+  }));
+})();
+      
