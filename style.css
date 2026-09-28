@@ -95,9 +95,6 @@ body.is-scrolling .section-heading{transform:translateY(calc(var(--scrollSpeed)*
 .final-cta{text-align:center;padding:150px 20px 170px;background:radial-gradient(ellipse at center,rgba(255,223,111,.26),transparent 60%)}.final-cta h2 span{color:var(--gold)}
 footer{padding:55px 7%;border-top:1px solid var(--line);text-align:center;background:rgba(255,255,255,.58)}.footer-logo{font-family:"Cormorant Garamond",serif;font-size:40px;letter-spacing:8px}footer p{color:var(--muted);margin:10px 0 22px}footer small{color:#aaa}
 
-.cart-overlay{position:fixed;inset:0;background:rgba(15,14,10,.35);backdrop-filter:blur(8px);z-index:50;opacity:0;visibility:hidden;transition:.3s}.cart-overlay.active{opacity:1;visibility:visible}
-.cart-panel{position:absolute;right:0;top:0;height:100%;width:min(440px,100%);background:#fffdf7;padding:55px 32px;box-shadow:-20px 0 60px rgba(0,0,0,.12);transform:translateX(100%);transition:.35s}.cart-overlay.active .cart-panel{transform:translateX(0)}
-.close-cart{position:absolute;right:24px;top:18px;background:none;border:0;font-size:34px;cursor:pointer}.cart-panel h2{font-family:"Cormorant Garamond",serif;font-size:50px;margin:12px 0 35px}.cart-item{display:flex;justify-content:space-between;padding:17px 0;border-bottom:1px solid var(--line);font-size:14px}.cart-total{display:flex;justify-content:space-between;font-size:18px;padding:25px 0}.cart-total strong{color:#b18e20}.checkout{width:100%;padding:17px;font-size:15px;margin-top:12px}
 
 @media(max-width:800px){
 .nav{height:82px;padding:0 20px}.logo{font-size:35px;letter-spacing:6px}.cart-button{padding:12px 17px}
@@ -160,4 +157,10 @@ body:after{content:"";position:fixed;inset:0;pointer-events:none;z-index:4;opaci
 .cta-stars{color:#c5a13a;letter-spacing:10px;font-size:14px;margin-bottom:18px;opacity:.8;animation:starDrift 5s ease-in-out infinite}.cta-stars::first-letter{font-size:24px}@keyframes starDrift{50%{letter-spacing:15px;transform:translateY(-5px)}}
 .final-cta h2 span{background:linear-gradient(110deg,#9a7416,#f0d57a,#b48c22);-webkit-background-clip:text;background-clip:text;color:transparent}
 .footer-logo{background:linear-gradient(90deg,#28241d,#b38a1e,#28241d);-webkit-background-clip:text;background-clip:text;color:transparent}.footer-logo span{color:#d2ad3c;font-size:16px}
-.halo-ring{position:absolute;border:1px solid rgba(224,190,83,.13);border-radius:50%;pointer-events:none}.halo-ring-1{width:420px;
+.halo-ring{position:absolute;border:1px solid rgba(224,190,83,.13);border-radius:50%;pointer-events:none}.halo-ring-1{width:420px;height:420px;top:-90px;right:-80px;animation:ringSpin 28s linear infinite}.halo-ring-2{width:600px;height:600px;top:-180px;right:-170px;border-style:dashed;opacity:.45;animation:ringSpin 45s linear infinite reverse}@keyframes ringSpin{to{transform:rotate(360deg)}}
+@media(max-width:800px){.hero:before{width:100vw;height:100vw}.hero-orbit{width:230px;bottom:9%}.benefits{grid-template-columns:1fr}.benefit-intro{grid-column:auto}.halo-ring-1{width:280px;height:280px;right:-130px}.halo-ring-2{width:400px;height:400px;right:-190px}.ambient-orb{opacity:.22}}
+@media(prefers-reduced-motion:reduce){.logo,.hero h1 span,.product-art,.product-art:before,.product-art em,.hero-orbit,.cta-stars,.halo-ring-1,.halo-ring-2{animation:none!important}}
+
+/* ===== HEAVEN V5 PRODUCT COLLECTION ===== */
+.products-large{grid-template-columns:repeat(3,1fr);max-width:1320px;gap:24px}
+.product-icon{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);fon
